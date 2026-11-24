@@ -1,0 +1,17 @@
+name: context varables demo
+on: push
+jobs:
+  context-demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: use context varables
+        run: |
+          echo "this workflow is triggered by ${{github.actor}}"
+          echo "this repository name is ${{github.repository}}"
+          echo "the branch is ${{github.ref_name}}"
+      - name: print all varables under github
+        run: echo "${{toJson(github)}}"
+      - name: print environment varables
+        run: echo "$GITHUB_SHA" 
+      
+      
