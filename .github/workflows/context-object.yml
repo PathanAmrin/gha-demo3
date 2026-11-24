@@ -1,17 +1,13 @@
-name: context varables demo
+name: output demo
 on: push
 jobs:
-  context-demo:
-    runs-on: ubuntu-latest
+  job1:
+    runs-on: ubuntu_latest
     steps:
-      - name: use context varables
-        run: |
-          echo "this workflow is triggered by ${{github.actor}}"
-          echo "this repository name is ${{github.repository}}"
-          echo "the branch is ${{github.ref_name}}"
-      - name: print all varables under github
-        run: echo "${{toJson(github)}}"
-      - name: print environment varables
-        run: echo "$GITHUB_SHA" 
+      - name: step one
+        id: step1
+        run: echo "version=0.0.1" >>$GITHUB_OUTPUT
+      - name: step two
+        run: echo "this version is ${{steps.step1.outputs.version}}"
       
       
