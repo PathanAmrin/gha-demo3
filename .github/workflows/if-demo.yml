@@ -1,0 +1,16 @@
+name: if demo
+on:
+  push:
+    branches: 
+      - develop
+      - feature
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: run if branch is feature
+        if: github.ref_name == 'feature'
+        run: echo "running for main feature"
+      - name: run this step
+        run: echo "running this step"
+        
