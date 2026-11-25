@@ -1,8 +1,8 @@
-name:
+name: or condition
 on:
   push:
     branches:
-      -main
+      - main
   pull_request: 
     types:
       - opened
@@ -19,5 +19,5 @@ jobs:
     if: github.event_name == 'push' && github.ref_name == 'main'
     steps:
       - name: deploy step
-        run: echoc"deploying the application"
+        run: echo "deploying the application"
       
